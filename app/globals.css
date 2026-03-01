@@ -1,26 +1,65 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0d0d0d;
+  --foreground: #f0ece4;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-y: scroll;
+}
+
+/* TipTap Editor Styles */
+.prose-container {
+  max-width: 65ch;
+  margin: 0 auto;
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+.prose-container .ProseMirror:focus {
+  outline: none;
+}
+
+.prose-container p {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  margin-bottom: 1.25em;
+  color: #242424;
+}
+
+.prose-container h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  line-height: 1.3;
+  color: #2c2c2f;
+}
+
+.prose-container blockquote {
+  border-left: 4px solid #2c2c2f;
+  padding-left: 1rem;
+  font-style: italic;
+  margin-left: 0;
+  margin-right: 0;
+  color: #4b5563;
+}
+
+.prose-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 2em 0;
+}
+
+.prose-container strong {
+  font-weight: 600;
+  color: #111827;
 }
