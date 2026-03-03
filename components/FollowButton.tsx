@@ -13,15 +13,18 @@ export default function FollowButton({ targetUserId }: { targetUserId: string })
         let mounted = true;
         const checkFollow = async () => {
             if (user && user.id !== targetUserId) {
-                const { data } = await insforge.database.from('follows')
-                    .select('*')
-                    .eq('follower_id', user.id)
-                    .eq('following_id', targetUserId)
-                    .maybeSingle();
-
-                if (mounted) {
-                    setIsFollowing(!!data);
-                    setLoading(false);
+                try {
+                    const { data } = await insforge.database.from('follows')
+                        .select('*')
+                        .eq('follower_id', user.id)
+                        .eq('following_id', targetUserId)
+                        .maybeSingle();
+                    if (mounted) {
+                        setIsFollowing(!!data);
+                        setLoading(false);
+                    }
+                } catch {
+                    if (mounted) setLoading(false);
                 }
             } else {
                 if (mounted) setLoading(false);
@@ -35,16 +38,20 @@ export default function FollowButton({ targetUserId }: { targetUserId: string })
     const handleToggle = async () => {
         if (!user) return;
         setLoading(true);
-        if (isFollowing) {
-            await insforge.database.from('follows')
-                .delete()
-                .eq('follower_id', user.id)
-                .eq('following_id', targetUserId);
-            setIsFollowing(false);
-        } else {
-            await insforge.database.from('follows')
-                .insert({ follower_id: user.id, following_id: targetUserId });
-            setIsFollowing(true);
+        try {
+            if (isFollowing) {
+                await insforge.database.from('follows')
+                    .delete()
+                    .eq('follower_id', user.id)
+                    .eq('following_id', targetUserId);
+                setIsFollowing(false);
+            } else {
+                await insforge.database.from('follows')
+                    .insert({ follower_id: user.id, following_id: targetUserId });
+                setIsFollowing(true);
+            }
+        } catch {
+            // Silently handle — optimistic UI will correct on next load
         }
         setLoading(false);
     };
@@ -55,7 +62,7 @@ export default function FollowButton({ targetUserId }: { targetUserId: string })
         <button
             onClick={handleToggle}
             disabled={loading}
-            className={`px-6 py-2 rounded-full font-medium transition-colors flex items-center justify-center ${isFollowing ? 'border border-[#2c2c2f] text-[#2c2c2f] hover:bg-black/5' : 'bg-[#2c2c2f] text-white hover:bg-black'}`}
+            className={`px-6 py-2 rounded-[16px] font-medium transition-colors flex items-center justify-center ${isFollowing ? 'border border-[#c9a84c] text-[#c9a84c] hover:bg-[#c9a84c]/10' : 'bg-[#c9a84c] text-[#0a0a0a] hover:bg-[#e8c96a]'}`}
         >
             {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : isFollowing ? 'Following' : 'Follow'}
         </button>
