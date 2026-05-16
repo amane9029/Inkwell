@@ -1,36 +1,137 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Inkwell
+
+Inkwell is a modern AI-powered writing and content creation platform built for immersive storytelling, drafting, and interactive content workflows.
+
+Designed with a polished modern UI, rich text editing, and AI integration, Inkwell focuses on making writing feel fluid, creative, and engaging rather than static.
+
+## Features
+
+- Rich text editing powered by TipTap
+- AI-assisted content workflows via InsForge SDK
+- Interactive and animated modern UI
+- Responsive layout for desktop and mobile
+- Smooth transitions and motion interactions using Framer Motion
+- Dynamic particle-based visual effects
+- Modern App Router architecture with Next.js 16
+- Type-safe codebase using TypeScript
+
+## Tech Stack
+
+### Frontend
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Framer Motion
+- Lucide React
+
+### Editor & Content
+- TipTap Editor
+- TipTap Starter Kit
+- TipTap Image Extension
+
+### AI / Integrations
+- InsForge SDK
+- InsForge Next.js Integration
+
+### UI / Effects
+- tsParticles
+
+## Project Structure
+
+```bash
+Inkwell/
+├── app/               # Next.js app router pages
+├── components/        # Reusable UI components
+├── lib/               # Utility functions / integrations
+├── public/            # Static assets
+├── styles/            # Styling configuration
+└── package.json
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+Make sure you have installed:
+
+- Node.js 18+
+- npm / pnpm / yarn / bun
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/amane9029/Inkwell.git
+```
+
+Move into the project:
+
+```bash
+cd Inkwell
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment Variables
 
-## Learn More
+Create a `.env.local` file if required for AI integrations:
 
-To learn more about Next.js, take a look at the following resources:
+```env
+INSFORGE_API_KEY=your_key_here
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+(Add any additional environment variables depending on your setup.)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Scripts
 
-## Deploy on Vercel
+```bash
+npm run dev      # Start development server
+npm run build    # Production build
+npm run start    # Start production server
+npm run lint     # Run lint checks
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Design Philosophy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Inkwell is built around the idea that writing tools should feel inspiring, fast, and intelligent.
+
+Instead of traditional static editors, the goal is to combine:
+
+- clean interface design
+- expressive interactions
+- AI-enhanced workflows
+- immersive writing experiences
+
+## Roadmap
+
+Planned improvements:
+
+- document persistence
+- export functionality
+- collaboration support
+- richer AI writing assistance
+- templates / writing modes
+- user authentication
+- publishing workflows
+
+## Author
+
+Built by Amane
